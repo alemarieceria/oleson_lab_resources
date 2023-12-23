@@ -1,12 +1,29 @@
 ---
 title: "How Does the Oleson Lab Work with Data?"
-date: 12/23/2023
-date-modified: last-modified
-format: 
-  gfm:
-    toc: true
+date: "<i>12/23/2023</i>"
+format: gfm
 ---
 
+## Topics
+
+- [Overview of Projects and Data
+  Types](#overview-of-projects-and-data-types)
+- [Data Storage, Organization, and
+  Tracking](#data-storage-organization-and-tracking)
+- [Documentation, Metadata, and Data
+  Quality](#documentation-metadata-and-data-quality)
+- [Tools, Software, and Formats](#tools-software-and-formats)
+- [Data Ownership, Access, and
+  Sharing](#data-ownership-access-and-sharing)
+- [Version Control, Analysis Documentation, and
+  Training](#version-control-analysis-documentation-and-training)
+- [Compliance, Ethics, and Interdisciplinary
+  Collaboration](#compliance-ethics-and-interdisciplinary-collaboration)
+- [Long-term Management, Feedback, and Resource
+  Allocation](#long-term-management-feedback-and-resource-allocation)
+- [Miscellaneous and Continuous
+  Improvement](#miscellaneous-and-continuous-improvement)
+  
 ## Overview of Projects and Data Types
 
 1.  What are our previous, current, and future projects?

@@ -1,5 +1,7 @@
 # How Does the Oleson Lab Work with Data?
-2023-12-23
+Invalid Date
+
+## Topics
 
 - [Overview of Projects and Data
   Types](#overview-of-projects-and-data-types)
