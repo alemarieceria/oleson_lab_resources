@@ -1,0 +1,69 @@
+---
+title: "How Does the Oleson Lab Work with Data?"
+date: 12/23/2023
+date-modified: last-modified
+format: 
+  gfm:
+    toc: true
+---
+
+## Overview of Projects and Data Types
+
+1.  What are our previous, current, and future projects?
+2.  What types of data have we collected, and what do we plan to collect?
+3.  Are there new types of data or data sources we are considering exploring?
+
+## Data Storage, Organization, and Tracking
+
+1.  How and where is our data currently stored (both physically and digitally)?
+2.  What are our protocols for naming files and organizing directories?
+3.  Do we have a centralized system or database for tracking our data?
+4.  How do we ensure the security and confidentiality of our data?
+5.  What are our backup and disaster recovery plans for data?
+
+## Documentation, Metadata, and Data Quality
+
+1.  How do we document our datasets, and where are these documents stored?
+2.  What standards do we follow for creating and maintaining data dictionaries and metadata?
+3.  How do we ensure the quality and integrity of our data?
+4.  Are there processes in place for regular data cleaning and validation?
+5.  How do we currently document our data analysis workflows? Are these documents easily accessible and understandable to all team members, including new ones?
+
+## Tools, Software, and Formats
+
+1.  What software and tools are currently used for data exploration and analysis?
+2.  Are team members proficient in these tools, or is training required?
+3.  What common data formats do we use for ease of sharing and collaboration?
+4.  How do we ensure software and tool compatibility across different team members?
+
+## Data Ownership, Access, and Sharing
+
+1.  Who are the primary data owners and maintainers for each project?
+2.  How is data access controlled within the lab?
+3.  What are our protocols for sharing data with external collaborators?
+4.  Are we complying with all relevant data sharing policies and guidelines?
+
+## Version Control, Analysis Documentation, and Training
+
+1.  How do we document our analysis methods and software settings?
+2.  Is there a need for a workshop or training session on tools like Git, GitHub, `renv` R package, Conda, or Mamba for version control?
+3.  What version control systems are we currently using?
+
+## Compliance, Ethics, and Interdisciplinary Collaboration
+
+1.  Are we adhering to ethical guidelines and legal requirements related to datas?
+2.  How do we handle sensitive or confidential data?
+3.  Are our data management practices adaptable for interdisciplinary collaborations?
+
+## Long-term Management, Feedback, and Resource Allocation
+
+1.  How do we plan for the long-term storage, preservation, and archiving of our data?
+2.  What challenges have we encountered in data management, and how can we improve?
+3.  Do we have adequate resources (hardware, software, personnel) for effective data management?
+
+## Miscellaneous and Continuous Improvement
+
+1.  Are there any specific data management tools or practices we should consider adopting?
+    -   [DMPTool](https://dmptool.org/)
+2.  How frequently should we review and update our data management policies?
+3.  What training or resources would help improve our data management practices?

@@ -1,8 +1,6 @@
 # How Does the Oleson Lab Work with Data?
 2023-12-23
 
-## Topics
-
 - [Overview of Projects and Data
   Types](#overview-of-projects-and-data-types)
 - [Data Storage, Organization, and
