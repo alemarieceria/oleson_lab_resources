@@ -1,5 +1,5 @@
 # How Does the Oleson Lab Work with Data?
-Invalid Date
+2023-12-23
 
 ## Topics
 

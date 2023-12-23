@@ -1,6 +1,6 @@
 ---
 title: "How Does the Oleson Lab Work with Data?"
-date: "<i>12/23/2023</i>"
+date: 12/23/2023
 format: gfm
 ---
 
