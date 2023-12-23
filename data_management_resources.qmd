@@ -1,0 +1,8 @@
+---
+title: "Data Management Resources"
+format: html
+---
+
+## Resources
+
+[Data Management for Scientists Workshop by David LeBauer](https://www.youtube.com/watch?v=m29u6OniOGQ&t=3398)
