@@ -1,0 +1,112 @@
+---
+title: "Query Google Places API (New) Data"
+author: "Alemarie Ceria"
+format: 
+  html:
+    toc-title: "Contents"
+#   revealjs:
+#     center-title-slide: true
+#     scroll-view: true
+#     chalkboard: true
+#     incremental: true   
+#     # scrollable: true
+#     # smaller: true
+#     multiplex: true
+#     output-file: query_google_places_api_data_slides.html
+execute:
+  echo: true
+---
+
+## Background
+
+### What
+
+We want to collect the following data:
+
+-   Lodging Types: Hotels, Resorts
+-   Site location (Oahu): Addresses?, Coordinates?
+-   Amenities: \# of restaurants, presence of pools, association with golf course
+
+### Why
+
+-   \[Insert research question and model\]
+
+### How
+
+-   Data sources:
+    -   [Google Places API (New)](https://developers.google.com/maps/documentation/places/web-service/op-overview)
+        -   [Nearby search (New)](https://developers.google.com/maps/documentation/places/web-service/nearby-search)
+        -   [Text search (New)](https://developers.google.com/maps/documentation/places/web-service/text-search)
+        -   [Place Details (New)](https://developers.google.com/maps/documentation/places/web-service/place-details)
+    -   Business & hotel websites
+-   Tooling: R script to query data
+
+## Brief Overview of Steps
+
+-   Set up API: [Google Cloud Platform](https://console.cloud.google.com) account, billing, enable APIs, create API key
+-   Write R query in [Posit Cloud](https://posit.cloud/)
+-   Use Git/GitHub for version control and collaboration
+
+## Set Up API
+
+1.  Navigate to [Google Cloud Platform](https://console.cloud.google.com)
+
+2.  Sign in or create an account
+    -   **Note**: While Google requires billing information to enable API access, the types of queries we plan to run are within the free usage limits and should not incur charges
+
+3.  Click on "Select a project" at top left
+
+![](../../assets/img/query_google_places_api_data_steps/step_3.png){fig-align="center"}
+
+4.  Click on "New project" at top right
+
+![](../../assets/img/query_google_places_api_data_steps/step_4.png){fig-align="center"}
+
+5.  First insert a project name, then click the "Create" button and navigate to project
+
+![](../../assets/img/query_google_places_api_data_steps/step_5.png){fig-align="center"}
+
+6.  At the top left, click the hamburger menu. Hover mouse over "APIs & Services", then click on "Enabled APIs & services".
+
+![](../../assets/img/query_google_places_api_data_steps/step_6.png){fig-align="center"}
+
+7.  Click on "+ Enable APIs and services"
+
+![](../../assets/img/query_google_places_api_data_steps/step_7.png){fig-align="center"}
+
+8.  In the search bar, type in "Places API (New)" and press "Enter" on keyboard to search
+
+![](../../assets/img/query_google_places_api_data_steps/step_8.png){fig-align="center"}
+
+9.  Click on "Places API (New)"
+
+![](../../assets/img/query_google_places_api_data_steps/step_9.png){fig-align="center"}
+
+10. Click "Enable"
+
+![](../../assets/img/query_google_places_api_data_steps/step_10.png){fig-align="center"}
+
+11. Navigate and click on the hamburger menu again at the top left. Hover over "APIs & Services", then click on "Credentials".
+
+![](../../assets/img/query_google_places_api_data_steps/step_11.png){fig-align="center"}
+
+12. Hover over "+ Create credentials" and click on "API key"
+
+![](../../assets/img/query_google_places_api_data_steps/step_12.png){fig-align="center"}
+
+13. Your API key is now created and this is what you will use to query your data
+    -   **Note**: Keep your API key private. Never share it or commit it to public repositories. This protects against unauthorized use and potential billing issues.
+
+![](../../assets/img/query_google_places_api_data_steps/step_13.png){fig-align="center"}
+
+14. For more security, navigate to your most recently created API key to configure its settings
+
+![](../../assets/img/query_google_places_api_data_steps/step_14.png){fig-align="center"}
+
+15. First, enter a unique name for your key. Then, under "API restrictions", click "Restrict key", filter for "Places API (New)", and select it to limit usage to that specific API. Finally, click "Save" at the bottom to apply the changes.
+    -   **Note**: Use this key as needed. To view it again later, click "Show key".
+
+![](../../assets/img/query_google_places_api_data_steps/step_15.png){fig-align="center"}
+
+## Write R Query in [Posit Cloud](https://posit.cloud/)
+

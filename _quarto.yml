@@ -1,0 +1,29 @@
+project: 
+  type: website
+  output-dir: docs
+
+website:
+  title: "Oleson Lab Resources"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Data Collection"
+        menu:
+          - text: "<u>API</u>"
+          - text: "Query Google Places API Data"
+            href: data_collection/api/query_google_places_api_data.qmd
+
+format:
+  html:
+    theme: litera
+    page-layout: full
+    link-external-newwindow: true
+    code-fold: true
+    code-overflow: wrap
+    code-annotations: hover
+    code-tools: true
+    smooth-scroll: true
+    toc: true
+    toc-depth: 4
+    toc-location: left
