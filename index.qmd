@@ -1,7 +1,17 @@
 ---
-title: "Overview"
-format: 
+title: "Training Resource Hub"
+format:
   html:
     toc: true
+    grid:
+      body-width: 900px
+listing:
+  type: default
+  contents:
+    - data_collection/api/data_collection/api/query_google_places_api_data.qmd
+  sort: "date desc"
+  categories: true
+  filter-ui: true
 ---
 
+Welcome! This is a hub of training resources. Use the filters above to explore by topic.
