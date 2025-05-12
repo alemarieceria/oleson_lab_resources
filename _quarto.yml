@@ -14,13 +14,6 @@ website:
       #     - text: "Query Google Places API Data"
       #       href: data_collection/api/query_google_places_api_data.qmd
 
-listing:
-  fields:
-    - title
-    - categories
-    - description
-    - image
-
 format:
   html:
     theme: litera

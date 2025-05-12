@@ -2,6 +2,7 @@
 title: "Query Google Places API (New) Data in R"
 author: "Alemarie Ceria"
 description: "Step-by-step guide to retrieving Oʻahu hotel location and amenities data using R and the Google Places API."
+categories: [Data Collection, API, R, Google Places]
 format: 
   html:
     toc-title: "Contents"
@@ -14,7 +15,6 @@ format:
 #     # smaller: true
 #     multiplex: true
 #     output-file: query_google_places_api_data_slides.html
-categories: [Data Collection, API, R, Google Places]
 execute:
   echo: true
 ---

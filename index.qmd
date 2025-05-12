@@ -8,10 +8,15 @@ format:
 listing:
   type: default
   contents:
-    - data_collection/api/data_collection/api/query_google_places_api_data.qmd
+    - data_collection/api/*.qmd
   sort: "date desc"
   categories: true
   filter-ui: true
+  fields:
+    - title
+    - categories
+    - description
+    - image
 ---
 
 Welcome! This is a hub of training resources. Use the filters above to explore by topic.
