@@ -11,7 +11,6 @@ format:
     code-fold: true
 execute:
   echo: true
-  eval: false
 ---
 
 # Background
@@ -143,18 +142,21 @@ touch .gitignore
 
 ```{r} 
 #| code-summary: "\u200B2. Open the `.gitignore` file, add the files and save" 
+#| eval: false
 .Renviron
 .env
 ```
 
 ```{r} 
 #| code-summary: "\u200B3. Copy the following code into your console"
+#| eval: false
 install.packages("usethis")
 usethis::edit_r_environ()
 ```
 
 ```{r}
 #| code-summary: "\u200B4. In the file, add the following code and save"
+#| eval: false
 GOOGLE_PLACES_API_KEY = "your_real_key_here"
 ```
 
@@ -174,6 +176,7 @@ touch collect_google_places_oahu_hotel_amenities.R
 
 ```{r}
 #| code-summary: "\u200B2. In `collect_google_places_oahu_hotel_amenities.R`, install packages and load libraries"
+#| eval: false
 install.packages(c("httr", "jsonlite", "reactable"))
 library(httr) # for HTTP requests
 library(jsonlite) # JSON parsing and flattening
@@ -182,6 +185,7 @@ library(reactable) # Display data frame
 
 ```{r}
 #| code-summary: "\u200B3. Define constants"
+#| eval: false
 # text search (new) endpoint
 ENDPOINT <- "https://places.googleapis.com/v1/places:searchText"
 
@@ -199,6 +203,7 @@ MAX_N_RESULTS <- 20
   
 ```{r}
 #| code-summary: "Function to build required parameter: [FieldMask](https://developers.google.com/maps/documentation/places/web-service/text-search#fieldmask)"
+#| eval: false
 # Accepts a character vector of desired field paths and collapses into CSV string
 # `fields`: Vector of fields
 
@@ -209,6 +214,7 @@ make_field_mask <- function(fields) {
 
 ```{r}
 #| code-summary: "Function to get single page results"
+#| eval: false
 # Returns: List with the following elements: places (nested list), `nextPageToken` string if there are more results on next page or NULL if all results have been returned
 # `request_params`: list containing the JSON body parameters
 # `field_mask`: comma-separated string for X-Goog-FieldMask header
@@ -244,6 +250,7 @@ fetch_page <- function(request_params, field_mask) {
 
 ```{r}
 #| code-summary: "Function to retrieve all pages of query"
+#| eval: false
 # Returns: Data frame of flattened results
 # `text_query`: string, e.g. "hotels and resorts in Oahu, Hawaii"
 # `included_type`: optional string to filter by type ("hotel", "resort", etc.)
@@ -333,6 +340,7 @@ get_places_text_search <- function(
 
 ```{r}
 #| code-summary: "Define 30 mile buffer around Oʻahu centroid"
+#| eval: false
 oahu_buffer <- list(
   circle = list(
     center = list(latitude = 21.48, longitude = -157.99),
@@ -343,6 +351,7 @@ oahu_buffer <- list(
 
 ```{r}
 #| code-summary: "Execute text search function to get hotels on Oʻahu"
+#| eval: false
 df_oahu_hotels <- get_places_text_search(
   text_query    = "hotels and resorts in Oahu, Hawaii",
   included_type = "hotel",
@@ -352,6 +361,7 @@ df_oahu_hotels <- get_places_text_search(
 
 ```{r}
 #| code-summary: "\u200B6. Display results in interactive table"
+#| eval: false
 reactable(df_oahu_hotels, searchable = TRUE, filterable = TRUE)
 ```
 
