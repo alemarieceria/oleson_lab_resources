@@ -6,15 +6,6 @@ categories: [Data Collection, API, R, Google Places]
 format: 
   html:
     toc-title: "Contents"
-#   revealjs:
-#     center-title-slide: true
-#     scroll-view: true
-#     chalkboard: true
-#     incremental: true   
-#     # scrollable: true
-#     # smaller: true
-#     multiplex: true
-#     output-file: query_google_places_api_data_slides.html
 execute:
   echo: true
 ---
