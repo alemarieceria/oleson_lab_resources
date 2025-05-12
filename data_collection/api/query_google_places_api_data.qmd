@@ -3,16 +3,20 @@ title: "Query Google Places API (New) Data in R"
 author: "Alemarie Ceria"
 description: "Step-by-step guide to retrieving Oʻahu hotel location and amenities data using R and the Google Places API."
 categories: [Data Collection, API, R, Google Places]
-format: 
+format:
   html:
-    toc-title: "Contents"
+    toc: true
+    toc-location: left
+    toc-depth: 3
+    code-fold: true
 execute:
   echo: true
+  eval: false
 ---
 
-## Background
+# Background
 
-### What
+## What
 
 We want to collect the following data:
 
@@ -20,86 +24,334 @@ We want to collect the following data:
 -   Site location (Oʻahu): Addresses?, Coordinates?
 -   Amenities: \# of restaurants, presence of pools, association with golf course
 
-### Why
+## Why
 
 -   \[Insert research question and model\]
 
-### How
+## How
 
 -   Data sources:
     -   [Google Places API (New)](https://developers.google.com/maps/documentation/places/web-service/op-overview)
         -   [Nearby search (New)](https://developers.google.com/maps/documentation/places/web-service/nearby-search)
         -   [Text search (New)](https://developers.google.com/maps/documentation/places/web-service/text-search)
         -   [Place Details (New)](https://developers.google.com/maps/documentation/places/web-service/place-details)
-    -   Business & hotel websites
+    -   Supplementary: Business & hotel websites
 -   Tooling: R script to query data
 
 ## Brief Overview of Steps
 
--   Set up API: [Google Cloud Platform](https://console.cloud.google.com) account, billing, enable APIs, create API key
--   Write R query in [Posit Cloud](https://posit.cloud/)
--   Use Git/GitHub for version control and collaboration
+1. Set up API: [Google Cloud Platform](https://console.cloud.google.com) account, billing, enable APIs, create API key
+2. Write R query in [Posit Cloud](https://posit.cloud/)
 
-## Set Up API
+*Use Git/GitHub for version control and collaboration*
+
+# Set Up API
 
 1.  Navigate to [Google Cloud Platform](https://console.cloud.google.com)
 
 2.  Sign in or create an account
+
     -   **Note**: While Google requires billing information to enable API access, the types of queries we plan to run are within the free usage limits and should not incur charges
 
 3.  Click on "Select a project" at top left
 
-![](../../assets/img/query_google_places_api_data_steps/step_3.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_3.png){fig-align="center"}
 
 4.  Click on "New project" at top right
 
-![](../../assets/img/query_google_places_api_data_steps/step_4.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_4.png){fig-align="center"}
 
 5.  First insert a project name, then click the "Create" button and navigate to project
 
-![](../../assets/img/query_google_places_api_data_steps/step_5.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_5.png){fig-align="center"}
 
 6.  At the top left, click the hamburger menu. Hover mouse over "APIs & Services", then click on "Enabled APIs & services".
 
-![](../../assets/img/query_google_places_api_data_steps/step_6.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_6.png){fig-align="center"}
 
 7.  Click on "+ Enable APIs and services"
 
-![](../../assets/img/query_google_places_api_data_steps/step_7.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_7.png){fig-align="center"}
 
 8.  In the search bar, type in "Places API (New)" and press "Enter" on keyboard to search
 
-![](../../assets/img/query_google_places_api_data_steps/step_8.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_8.png){fig-align="center"}
 
 9.  Click on "Places API (New)"
 
-![](../../assets/img/query_google_places_api_data_steps/step_9.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_9.png){fig-align="center"}
 
 10. Click "Enable"
 
-![](../../assets/img/query_google_places_api_data_steps/step_10.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_10.png){fig-align="center"}
 
 11. Navigate and click on the hamburger menu again at the top left. Hover over "APIs & Services", then click on "Credentials".
 
-![](../../assets/img/query_google_places_api_data_steps/step_11.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_11.png){fig-align="center"}
 
 12. Hover over "+ Create credentials" and click on "API key"
 
-![](../../assets/img/query_google_places_api_data_steps/step_12.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_12.png){fig-align="center"}
 
 13. Your API key is now created and this is what you will use to query your data
     -   **Note**: Keep your API key private. Never share it or commit it to public repositories. This protects against unauthorized use and potential billing issues.
 
-![](../../assets/img/query_google_places_api_data_steps/step_13.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_13.png){fig-align="center"}
 
 14. For more security, navigate to your most recently created API key to configure its settings
 
-![](../../assets/img/query_google_places_api_data_steps/step_14.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_14.png){fig-align="center"}
 
 15. First, enter a unique name for your key. Then, under "API restrictions", click "Restrict key", filter for "Places API (New)", and select it to limit usage to that specific API. Finally, click "Save" at the bottom to apply the changes.
     -   **Note**: Use this key as needed. To view it again later, click "Show key".
 
-![](../../assets/img/query_google_places_api_data_steps/step_15.png){fig-align="center"}
+![](../../assets/img/query_google_places_api_data_steps/setup_api/step_15.png){fig-align="center"}
 
-## Write R Query in [Posit Cloud](https://posit.cloud/)
+# Write R Query
+
+## Create a New Project in [Posit Cloud](https://posit.cloud/)
+
+1.  At the top right, click "New Project" then click "New RStudio Project"
+
+![](../../assets/img/query_google_places_api_data_steps/write_r_query/step_1.png){fig-align="center"}
+
+2.  Name your project "collect_google_places_oahu_hotel_amenities"
+
+    **File Naming Conventions**:
+
+    -   Use snakecase
+    -   Use lowercase
+    -   Aim for names under \~40 characters
+    -   Keep name unambiguous for project's context
+    -   We want to follow the following convention:
+        -   Action (collect)
+        -   Source (google_places)
+        -   Location (oahu)
+        -   Dataset (hotel_amenities)
+        
+![](../../assets/img/query_google_places_api_data_steps/write_r_query/step_2.png){fig-align="center"}
+
+## Authentication
+
+1. Create `.gitignore` file by copying and running the following code in your terminal
+
+```bash
+touch .gitignore
+```
+
+![](../../assets/img/query_google_places_api_data_steps/write_r_query/step_3.png){fig-align="center"}
+
+```{r} 
+#| code-summary: "\u200B2. Open the `.gitignore` file, add the files and save" 
+.Renviron
+.env
+```
+
+```{r} 
+#| code-summary: "\u200B3. Copy the following code into your console"
+install.packages("usethis")
+usethis::edit_r_environ()
+```
+
+```{r}
+#| code-summary: "\u200B4. In the file, add the following code and save"
+GOOGLE_PLACES_API_KEY = "your_real_key_here"
+```
+
+5. Restart R for changes to take effect by pressing Ctrl + Shift + F10 on Windows or Command + Shift + F10 (or Shift + Command + 0 in newer RStudio versions) on macOS.
+
+## Generate Query
+
+### Create New R Script
+
+1. Copy and run the following code in your terminal:
+
+``` bash
+touch collect_google_places_oahu_hotel_amenities.R 
+```
+
+![](../../assets/img/query_google_places_api_data_steps/write_r_query/step_4.png){fig-align="center"}
+
+```{r}
+#| code-summary: "\u200B2. In `collect_google_places_oahu_hotel_amenities.R`, install packages and load libraries"
+install.packages(c("httr", "jsonlite", "reactable"))
+library(httr) # for HTTP requests
+library(jsonlite) # JSON parsing and flattening
+library(reactable) # Display data frame
+```
+
+```{r}
+#| code-summary: "\u200B3. Define constants"
+# text search (new) endpoint
+ENDPOINT <- "https://places.googleapis.com/v1/places:searchText"
+
+# environment variable name
+API_KEY <- Sys.getenv("GOOGLE_PLACES_API_KEY") 
+
+# API only allows up to 3 pages
+MAX_N_PAGES <- 3
+
+# API only allows up to 20 results per page (total of 60)
+MAX_N_RESULTS <- 20
+```
+
+4. Build helper functions:
+  
+```{r}
+#| code-summary: "Function to build required parameter: [FieldMask](https://developers.google.com/maps/documentation/places/web-service/text-search#fieldmask)"
+# Accepts a character vector of desired field paths and collapses into CSV string
+# `fields`: Vector of fields
+
+make_field_mask <- function(fields) {
+  paste(fields, collapse = ",")
+}
+```
+
+```{r}
+#| code-summary: "Function to get single page results"
+# Returns: List with the following elements: places (nested list), `nextPageToken` string if there are more results on next page or NULL if all results have been returned
+# `request_params`: list containing the JSON body parameters
+# `field_mask`: comma-separated string for X-Goog-FieldMask header
+
+fetch_page <- function(request_params, field_mask) {
+  response <- POST(
+    url = ENDPOINT,
+    add_headers(
+      `Content-Type`     = "application/json",
+      `X-Goog-Api-Key`   = Sys.getenv(API_KEY_ENV),
+      `X-Goog-FieldMask` = field_mask
+    ),
+    body = toJSON(request_params, auto_unbox = TRUE)
+  )
+
+  # Validate HTTP status
+  if (status_code(response) < 200 || status_code(response) >= 300) {
+    err <- content(response, "parsed")$error
+    stop(sprintf("HTTP [%d]: %s", status_code(response), err$message))
+  }
+
+  data <- content(response, "parsed")
+  if (!is.null(data$error)) {
+    stop("API error: ", data$error$message)
+  }
+
+  list(
+    places        = data$places,
+    nextPageToken = data$nextPageToken
+  )
+}
+```
+
+```{r}
+#| code-summary: "Function to retrieve all pages of query"
+# Returns: Data frame of flattened results
+# `text_query`: string, e.g. "hotels and resorts in Oahu, Hawaii"
+# `included_type`: optional string to filter by type ("hotel", "resort", etc.)
+# `buffer`: optional list for locationBias (circle or rectangle)
+
+get_places_text_search <- function(
+  text_query,
+  included_type = NULL,
+  buffer = NULL
+) {
+  # a) Base parameters for every request
+  common_params <- list(
+    textQuery                         = text_query,
+    strictTypeFiltering               = TRUE,
+    includePureServiceAreaBusinesses  = FALSE
+  )
+  if (!is.null(included_type)) common_params$includedType <- included_type
+  if (!is.null(buffer)) common_params$locationBias <- buffer
+
+  # b) Fields to retrieve
+  fields <- c(
+    # Identification
+    "places.name", "places.id", "places.displayName.text",
+    
+    # Location
+    "places.location", "places.formattedAddress",
+    "places.shortFormattedAddress",
+    
+    # Website
+    "places.googleMapsUri", "places.websiteUri",
+    
+    # Category
+    "places.types", "places.primaryTypeDisplayName.text",
+    "places.dineIn",
+    
+    # Summaries
+    "places.generativeSummary.overview.text",
+    "places.editorialSummary.text", 
+    "places.reviewSummary.text.text",
+    
+    # Pagination
+    "nextPageToken"
+  )
+  field_mask <- make_field_mask(fields)
+
+  # c) Initialize storage for all pages
+  all_results <- list()
+  next_page_token <- NULL
+
+  # d) Fetch each page in turn
+  for (page_index in seq_len(MAX_PAGES)) {
+    message(sprintf("Retrieving page %d...", page_index))
+
+    # Prepare parameters for this page:
+    # Start with the base parameters and add pagination settings
+    page_request <- common_params
+    page_request$pageSize <- PAGE_SIZE
+    if (!is.null(next_page_token)) {
+      page_request$pageToken <- next_page_token
+    }
+
+    # Call the API for this page
+    page_response <- fetch_page(page_request, field_mask)
+
+    # Append the retrieved places to our full list
+    all_results <- c(all_results, page_response$places)
+
+    # Check if there is another page to fetch
+    next_page_token <- page_response$nextPageToken
+    if (is.null(next_page_token)) {
+      message("All pages retrieved.")
+      break
+    }
+
+    # Pause briefly before requesting the next page
+    Sys.sleep(2)
+  }
+
+  # e) Convert the list of place entries into a flat data.frame
+  results_df <- fromJSON(toJSON(list(places = all_results)), flatten = TRUE)$places
+  message(sprintf("Fetched %d total places.", nrow(results_df)))
+  results_df
+}
+```
+
+5. Run query:
+
+```{r}
+#| code-summary: "Define 30 mile buffer around Oʻahu centroid"
+oahu_buffer <- list(
+  circle = list(
+    center = list(latitude = 21.48, longitude = -157.99),
+    radius = 48280  # meters (~30 mi)
+  )
+)
+```
+
+```{r}
+#| code-summary: "Execute text search function to get hotels on Oʻahu"
+df_oahu_hotels <- get_places_text_search(
+  text_query    = "hotels and resorts in Oahu, Hawaii",
+  included_type = "hotel",
+  buffer = oahu_buffer
+)
+```
+
+```{r}
+#| code-summary: "\u200B6. Display results in interactive table"
+reactable(df_oahu_hotels, searchable = TRUE, filterable = TRUE)
+```
 
