@@ -3,7 +3,7 @@ title: "Commit Message Convention & Log Viewing Guide"
 author: "Alemarie Ceria"
 description: "A concise guide on using Conventional Commits for commit messages and viewing commit history in a readable format."
 categories: [Git, Workflow, Version Control]
-image: assets/img/commit_guidelines/git_logo.png
+image: ../../assets/img/commit_guidelines/git_logo.png
 format:
   html:
     toc: true
@@ -14,7 +14,7 @@ execute:
   echo: true
 ---
 
-## 1. Commit Message Format
+## Commit Message Format
 
 **Preferred Convention:**  
 Use the [Conventional Commits](https://www.conventionalcommits.org/) specification.
@@ -50,7 +50,7 @@ Use the [Conventional Commits](https://www.conventionalcommits.org/) specificati
 
 ### Common Scopes
 
-- `core`: Main R logic—Targets pipelines for data processing and Shiny modules (in Rhino)
+- `core`: Main R logic—argets pipelines for data processing and Shiny modules (in Rhino)
 - `api`: API integrations (e.g., `httr`, `curl`, or custom endpoints)
 - `ui`: Shiny UI code, Rhino UI modules, or React UI via `reactRouter`
 - `db`: Database access/queries (e.g., with DBI, dplyr)
@@ -60,11 +60,11 @@ Use the [Conventional Commits](https://www.conventionalcommits.org/) specificati
 - `deps`: Dependency management (`renv.lock`, DESCRIPTION)
 - `build`: Build scripts (e.g., Rhino, Quarto rendering, `devtools::build()`)
 - `test`: Testing files (e.g., `testthat`, Rhino test modules)
-- `scripts`: Standalone R scripts, targets pipelines (`_targets.R`)
+- `scripts`: Standalone R scripts, Targets pipelines (`_targets.R`)
 - `ci`: CI configuration (e.g., GitHub Actions for R/Quarto workflows)
-- `config`: Config files (`.Rprofile`, `config.yml`, Rhino/targets configs)
+- `config`: Config files (`.Rprofile`, `config.yml`, Rhino/Targets configs)
 
-## 2. How to View Commit Messages
+## How to View Commit Messages
 
 **Preferred Command:**
 
@@ -85,7 +85,7 @@ git log --pretty=format:"%h | %an | %ad | %s" --date=short | column -t -s '|'
 e1a2f8a   Author Name   2024-05-26   fix(ui): resolve login button alignment
 ```
 
-## 3. Best Practices
+## Best Practices
 
 - Use clear, specific descriptions.
 - Apply scopes for clarity, especially in multi-module projects.
