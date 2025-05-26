@@ -9,6 +9,7 @@ listing:
   type: default
   contents:
     - data_collection/api/*.qmd
+    - version_control/git/*.qmd
   sort: "date desc"
   categories: true
   filter-ui: true

@@ -8,11 +8,6 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      # - text: "Data Collection"
-      #   menu:
-      #     - text: "<u>API</u>"
-      #     - text: "Query Google Places API Data"
-      #       href: data_collection/api/query_google_places_api_data.qmd
 
 format:
   html:
@@ -22,7 +17,6 @@ format:
     code-fold: true
     code-overflow: wrap
     code-annotations: hover
-    # code-tools: true
     smooth-scroll: true
     toc: true
     grid: 

@@ -1,0 +1,96 @@
+---
+title: "Commit Message Convention & Log Viewing Guide"
+author: "Alemarie Ceria"
+description: "A concise guide on using Conventional Commits for commit messages and viewing commit history in a readable format."
+categories: [Git, Workflow, Version Control]
+image: assets/img/commit_guidelines/git_logo.png
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 3
+    code-fold: true
+execute:
+  echo: true
+---
+
+## 1. Commit Message Format
+
+**Preferred Convention:**  
+Use the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+
+**Format:**  
+
+```bash
+# Bash code
+<type>(<scope>): <description>
+```
+
+- **type**: The category of change (e.g., `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `build`).
+- **scope** _(optional but recommended)_: The part of the codebase affected (e.g., `api`, `ui`, `scripts`, `db`, `readme`, `gitignore`).
+- **description**: Brief summary of the change.
+
+**Examples:**
+
+- `feat(api): add support for user authentication ` 
+- `fix(ui): resolve login button alignment`
+- `docs(readme): update setup instructions`
+- `chore(gitignore): ignore all data directories`
+- `test(scripts): remove obsolete test script`
+
+### Common Types
+
+- `feat`: new feature
+- `fix`: bug fix
+- `docs`: documentation only
+- `style`: formatting, no code change
+- `refactor`: code change, not a fix or feature
+- `test`: adding/correcting tests
+- `chore`: maintenance tasks
+
+### Common Scopes
+
+- `core`: Main R logic—Targets pipelines for data processing and Shiny modules (in Rhino)
+- `api`: API integrations (e.g., `httr`, `curl`, or custom endpoints)
+- `ui`: Shiny UI code, Rhino UI modules, or React UI via `reactRouter`
+- `db`: Database access/queries (e.g., with DBI, dplyr)
+- `docs`: Documentation files (e.g., Quarto docs, help files)
+- `readme`: `README.qmd` or `README.md`
+- `gitignore`: `.gitignore` changes
+- `deps`: Dependency management (`renv.lock`, DESCRIPTION)
+- `build`: Build scripts (e.g., Rhino, Quarto rendering, `devtools::build()`)
+- `test`: Testing files (e.g., `testthat`, Rhino test modules)
+- `scripts`: Standalone R scripts, targets pipelines (`_targets.R`)
+- `ci`: CI configuration (e.g., GitHub Actions for R/Quarto workflows)
+- `config`: Config files (`.Rprofile`, `config.yml`, Rhino/targets configs)
+
+## 2. How to View Commit Messages
+
+**Preferred Command:**
+
+```bash
+# Bash code
+git log --pretty=format:"%h | %an | %ad | %s" --date=short | column -t -s '|'
+```
+
+- %h: abbreviated commit hash
+- %an: author name
+- %ad: date (YYYY-MM-DD)
+- %s: commit message
+
+**Sample Output:**
+
+```
+4c5b2d3   Author Name   2024-05-27   feat(api): add support for user authentication  
+e1a2f8a   Author Name   2024-05-26   fix(ui): resolve login button alignment
+```
+
+## 3. Best Practices
+
+- Use clear, specific descriptions.
+- Apply scopes for clarity, especially in multi-module projects.
+- Make each commit focused on a single, logical change.
+- Always use the preferred `git log` command for consistent, readable history.
+
+**Reference:**  
+For more, see [Conventional Commits](https://www.conventionalcommits.org/).
